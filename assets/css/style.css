@@ -1,3 +1,11 @@
+.bg-info {
+    background-color: rgba(233, 236, 239)!important;
+}
+
+.jumbotron-fluid, footer {
+    background-image: url(../images/pawprintsBrown.png);
+}
+
 h1 {
     font-family: 'Trade Winds', cursive;
     font-size: 4rem;
@@ -6,12 +14,11 @@ h1 {
 .subtitle {
     font-family: 'Indie Flower', cursive;
     font-size: 2rem;
+    font-weight: bold;
 }
 
 h3, p {
     font-family: 'Indie Flower', cursive;
     font-size: 1.5rem;
 }
-
-
 
