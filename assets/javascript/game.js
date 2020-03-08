@@ -17,27 +17,32 @@ var gameEnd = false;
 
 //generate a random word and display as blanks
 function randWord() {
-    var blanks = [];
     for (var i = 0; i < word.length; i++) {
-    blanks[i] = "_";
+    wordGuesses[i] = "_";
     }
-    document.getElementById("blanks").innerHTML = blanks.join(" ");
+    document.getElementById("answer").innerHTML = wordGuesses.join(" ");
 }
 
 document.getElementById("rubsLeft").textContent = "Belly Rubs Left: " + rubs; 
 
 document.onkeyup = function(event) {
-    var userChoice = event.key;
-if (word.includes(event.key)) {
-    var correct = document.getElementById("answer");
-    correct.textContent = event.key;
-} else {
-    var incorrect = document.getElementById("letterList-text");
-    incorrect.textContent = event.key;
-    rubs--;
-    document.getElementById("rubsLeft").textContent = "Belly Rubs Left: " + rubs;
+    
+    var userChoice = event.key;
+    currIndex = word.indexOf(userChoice, 0);
+    if (currIndex >= 0) {
+        while (currIndex >=0) {
+            wordGuesses[currIndex] = userChoice;
+            currIndex=word.indexOf(userChoice, currIndex + 1);
+        }
+        document.getElementById("answer").textContent = wordGuesses.join(" ");
+    } else {
+        var incorrect = document.getElementById("letterList-text");
+        incorrect.textContent = userChoice;
+        rubs--;
+        document.getElementById("rubsLeft").textContent = "Belly Rubs Left: " + rubs;
+    }
 }
-}
+
 
 
 
