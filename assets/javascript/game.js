@@ -29,17 +29,21 @@ document.onkeyup = function(event) {
     
     var userChoice = event.key;
     currIndex = word.indexOf(userChoice, 0);
-    if (currIndex >= 0) {
+    if (currIndex >= 0 && rubs > 0) {
         while (currIndex >=0) {
             wordGuesses[currIndex] = userChoice;
             currIndex=word.indexOf(userChoice, currIndex + 1);
         }
         document.getElementById("answer").textContent = wordGuesses.join(" ");
     } else {
+        if (rubs > 0) {
         var incorrect = document.getElementById("letterList-text");
         incorrect.textContent = userChoice;
         rubs--;
         document.getElementById("rubsLeft").textContent = "Belly Rubs Left: " + rubs;
+        } else {
+            document.getElementById("answer").innerHTML = "Ouch! He caught you!";
+        }
     }
 }
 
