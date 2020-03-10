@@ -21,13 +21,15 @@ function randWord() {
     for (var i = 0; i < word.length; i++) {
     wordGuesses[i] = "_";
     }
-    document.getElementById("answer").innerHTML = wordGuesses.join(" ");     
+    document.getElementById("answer").innerHTML = wordGuesses.join(" ");  
+    wrong = [];
+    rubs = 5;   
 };
 
 
 document.getElementById("rubsLeft").textContent = "Belly Rubs Left: " + rubs; 
 document.getElementById("wins").textContent = "You've escaped " + escapes + " bites";
-document.getElementById("losses").textContent = "Youv'e been bitten " + bites + "times";
+document.getElementById("losses").textContent = "Youv'e been bitten " + bites + " times";
 
 document.onkeyup = function(event) {
     
@@ -48,11 +50,11 @@ document.onkeyup = function(event) {
         rubs--;
         document.getElementById("rubsLeft").textContent = "Belly Rubs Left: " + rubs;
         if (rubs < 3) {
-            document.getElementById("huImg").src = "Assets/Images/warn02.jpg";
+            document.getElementById("huImg").src = "../images/warn02.jpg";
             document.getElementById("caption").innerHTML = "I don't like the look on his face!";
         }
         } else {
-            document.getElementById("huImg").src = "Assets/Images/bite02.jpg";
+            document.getElementById("huImg").src = "../images/bite02.jpg";
             document.getElementById("caption").innerHTML = "Woohoo!  Free acupuncture!";
             document.getElementById("answer").innerHTML = "Ouch! He caught you!";
             document.getElementById("rubsLeft").textContent = "Belly Rubs Left: Yikes!";
