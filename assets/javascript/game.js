@@ -44,13 +44,10 @@ document.onkeyup = function(event) {
         var incorrect = document.getElementById("letterList-text");
         wrong.push(event.key);
         console.log(wrong)
-        incorrect.textContent = wrong;
+        incorrect.textContent = wrong.join(", ");
         rubs--;
         document.getElementById("rubsLeft").textContent = "Belly Rubs Left: " + rubs;
-        if (rubs >=3) {
-            document.getElementById("huImg").src = "Assets/Images/belly01.jpg";
-            document.getElementById("caption").innerHTML = "What a sweet boy!";
-        } else {
+        if (rubs < 3) {
             document.getElementById("huImg").src = "Assets/Images/warn02.jpg";
             document.getElementById("caption").innerHTML = "I don't like the look on his face!";
         }
