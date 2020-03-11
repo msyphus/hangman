@@ -53,11 +53,11 @@ document.onkeyup = function(event) {
         rubs--;
         document.getElementById("rubsLeft").textContent = "Belly Rubs Left: " + rubs;
         if (rubs < 3) {
-            document.getElementById("huImg").src = "../images/warn02.jpg";
+            document.getElementById("huImg").src = "assets/images/warn02.JPG";
             document.getElementById("caption").innerHTML = "I don't like the look on his face!";
         }
         } else {
-            document.getElementById("huImg").src = "../images/bite02.jpg";
+            document.getElementById("huImg").src = "../images/bite02.JPG";
             document.getElementById("caption").innerHTML = "Woohoo!  Free acupuncture!";
             document.getElementById("answer").innerHTML = "Ouch! He caught you!";
             document.getElementById("rubsLeft").textContent = "Belly Rubs Left: Yikes!";
