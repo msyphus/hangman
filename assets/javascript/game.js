@@ -8,7 +8,7 @@ var rubs = 5;  //number of belly rubs left
 //var status = ["What a sweet boy!", "I don't like the look on his face!", "Woohoo!  Free acupuncture!"] ;  //the image captions
 var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var words = ["fuzz", "bengal", "sokoke", "fiesty", "playful", "purrfect", "buddy", "fur ball"];
-var word = words[Math.floor(Math.random() * words.length)];
+var word;
 //var lettersGuessed = []; //letters the user has guessed
 var currIndex;  //index of the current word
 var wordGuesses = []; //the word being built to match the hidden word
@@ -18,12 +18,15 @@ var wrong = [];
 
 //generate a random word and display as blanks
 function randWord() {
+    word = words[Math.floor(Math.random() * words.length)];
     for (var i = 0; i < word.length; i++) {
     wordGuesses[i] = "_";
     }
     document.getElementById("answer").innerHTML = wordGuesses.join(" ");  
     wrong = [];
+    document.getElementById("letterList-text").textContent = wrong;
     rubs = 5;   
+    document.getElementById("rubsLeft").textContent = "Belly Rubs Left: " + rubs;
 };
 
 
@@ -50,11 +53,11 @@ document.onkeyup = function(event) {
         rubs--;
         document.getElementById("rubsLeft").textContent = "Belly Rubs Left: " + rubs;
         if (rubs < 3) {
-            document.getElementById("huImg").src = "../images/warn02.jpg";
+            document.getElementById("huImg").src = "assets/images/warn02.jpg";
             document.getElementById("caption").innerHTML = "I don't like the look on his face!";
         }
         } else {
-            document.getElementById("huImg").src = "../images/bite02.jpg";
+            document.getElementById("huImg").src = "assets/images/bite02.jpg";
             document.getElementById("caption").innerHTML = "Woohoo!  Free acupuncture!";
             document.getElementById("answer").innerHTML = "Ouch! He caught you!";
             document.getElementById("rubsLeft").textContent = "Belly Rubs Left: Yikes!";
