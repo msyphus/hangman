@@ -57,7 +57,7 @@ document.onkeyup = function(event) {
             document.getElementById("caption").innerHTML = "I don't like the look on his face!";
         }
         } else {
-            document.getElementById("huImg").src = "../images/bite02.JPG";
+            document.getElementById("huImg").src = "assets/images/bite02.JPG";
             document.getElementById("caption").innerHTML = "Woohoo!  Free acupuncture!";
             document.getElementById("answer").innerHTML = "Ouch! He caught you!";
             document.getElementById("rubsLeft").textContent = "Belly Rubs Left: Yikes!";
