@@ -63,6 +63,8 @@ document.onkeyup = function(event) {
             document.getElementById("caption").innerHTML = "Woohoo!  Free acupuncture!";
             document.getElementById("answer").innerHTML = "Ouch! He caught you!";
             document.getElementById("rubsLeft").textContent = "Belly Rubs Left: Yikes!";
+            bites++;
+            document.getElementById("losses").textContent = "You've been bitten " + bites + " times";
         }
     }
 };
