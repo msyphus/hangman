@@ -11,17 +11,19 @@ var words = ["fuzz", "bengal", "sokoke", "fiesty", "playful", "purrfect", "buddy
 var word;
 //var lettersGuessed = []; //letters the user has guessed
 var currIndex;  //index of the current word
-var wordGuesses = []; //the word being built to match the hidden word
+var wordGuesses; //the word being built to match the hidden word
 var wrong = [];
 //var gameStart = false;
 //var gameEnd = false;
 
 //generate a random word and display as blanks
 function randWord() {
+    wordGuesses = [];
     word = words[Math.floor(Math.random() * words.length)];
     for (var i = 0; i < word.length; i++) {
     wordGuesses[i] = "_";
     }
+    console.log(word);
     document.getElementById("answer").innerHTML = wordGuesses.join(" ");  
     wrong = [];
     document.getElementById("letterList-text").textContent = wrong;
