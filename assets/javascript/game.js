@@ -27,6 +27,8 @@ function randWord() {
     document.getElementById("letterList-text").textContent = wrong;
     rubs = 5;   
     document.getElementById("rubsLeft").textContent = "Belly Rubs Left: " + rubs;
+    document.getElementById("huImg").src = "assets/images/belly01.JPG";
+    document.getElementById("caption").textContent = "What a sweet boy!";
 };
 
 
