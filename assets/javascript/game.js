@@ -36,6 +36,13 @@ document.getElementById("rubsLeft").textContent = "Belly Rubs Left: " + rubs;
 document.getElementById("wins").textContent = "You've escaped " + escapes + " bites";
 document.getElementById("losses").textContent = "Youv'e been bitten " + bites + " times";
 
+function isWin () {
+    if(wordGuesses.indexOf("_") === -1) {
+        escapes++;
+        document.getElementById("wins").textContent = "You've escaped " + escapes + " bites";
+    }
+};
+
 document.onkeyup = function(event) {
     
     var userChoice = event.key;
@@ -67,6 +74,7 @@ document.onkeyup = function(event) {
             document.getElementById("losses").textContent = "You've been bitten " + bites + " times";
         }
     }
+    isWin();
 };
 
 
