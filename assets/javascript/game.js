@@ -13,11 +13,13 @@ var word;
 var currIndex;  //index of the current word
 var wordGuesses; //the word being built to match the hidden word
 var wrong = [];
+var gameOver = false;
 //var gameStart = false;
 //var gameEnd = false;
 
 //generate a random word and display as blanks
 function randWord() {
+    gameOver = false;
     wordGuesses = [];
     word = words[Math.floor(Math.random() * words.length)];
     for (var i = 0; i < word.length; i++) {
@@ -42,11 +44,12 @@ function isWin () {
     if(wordGuesses.indexOf("_") === -1) {
         escapes++;
         document.getElementById("wins").textContent = "You've escaped " + escapes + " bites";
+        gameOver = true;
     }
 };
 
 document.onkeyup = function(event) {
-    
+    if(gameOver === false){
     var userChoice = event.key;
     wordIndex = word.indexOf(userChoice, 0);
     if (wordIndex >= 0 && rubs > 0) {
@@ -74,9 +77,11 @@ document.onkeyup = function(event) {
             document.getElementById("rubsLeft").textContent = "Belly Rubs Left: Yikes!";
             bites++;
             document.getElementById("losses").textContent = "You've been bitten " + bites + " times";
+            gameOver = true;
         }
     }
     isWin();
+    }   
 };
 
 
