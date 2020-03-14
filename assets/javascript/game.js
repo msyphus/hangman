@@ -14,6 +14,7 @@ var currIndex;  //index of the current word
 var wordGuesses; //the word being built to match the hidden word
 var wrong = [];
 var gameOver = false;
+var userChoice;
 //var gameStart = false;
 //var gameEnd = false;
 
@@ -25,7 +26,6 @@ function randWord() {
     for (var i = 0; i < word.length; i++) {
     wordGuesses[i] = "_";
     }
-    console.log(word);
     document.getElementById("answer").innerHTML = wordGuesses.join(" ");  
     wrong = [];
     document.getElementById("letterList-text").textContent = wrong;
@@ -50,19 +50,22 @@ function isWin () {
 
 document.onkeyup = function(event) {
     if(gameOver === false){
-    var userChoice = event.key;
-    wordIndex = word.indexOf(userChoice, 0);
-    if (wordIndex >= 0 && rubs > 0) {
+        var userCode = event.keyCode;
+        userChoice = event.key;
+        if(userCode < 65 || userCode > 90) {
+            alert("Please type letters only.");
+        } else {
+        wordIndex = word.indexOf(userChoice, 0);
+        if (wordIndex >= 0 && rubs > 0) {
         while (wordIndex >=0) {
             wordGuesses[wordIndex] = userChoice;
             wordIndex=word.indexOf(userChoice, wordIndex + 1);
         }
         document.getElementById("answer").textContent = wordGuesses.join(" ");
-    } else {
+        } else {
         if (rubs > 1) {
         var incorrect = document.getElementById("letterList-text");
         wrong.push(event.key);
-        console.log(wrong)
         incorrect.textContent = wrong.join(", ");
         rubs--;
         document.getElementById("rubsLeft").textContent = "Belly Rubs Left: " + rubs;
@@ -79,10 +82,13 @@ document.onkeyup = function(event) {
             document.getElementById("losses").textContent = "You've been bitten " + bites + " times";
             gameOver = true;
         }
-    }
-    isWin();
-    }   
+        }
+        isWin();
+    } 
+}  
 };
+
+
 
 
 
