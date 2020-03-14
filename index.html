@@ -22,7 +22,7 @@
             <div class="col-sm-3 text-right">
                 <h3 class="font-weight-bold font-italic">Instructions:</h3>
             </div>
-            <div class="col-sm-8 pr-6">
+            <div class="col-sm-8 pr-6 pl-1">
                 <p><i>Huhu</i> is a loveable, cuddly cat who loves to have his belly rubbed...for a few seconds.
                 Guess the word while rubbing his belly, but hurry before he bites you! Each incorrect guess is worth a rub.
                 Huhu only likes five rubs.</p>
@@ -33,7 +33,7 @@
             <div class="col-sm-3">
                 <img id="huImg" src="assets/images/belly01.JPG" alt="Huhu" width=100% height=auto>
             </div>
-            <div class="col-sm-6 text-center">
+            <div class="col-sm-6 text-center px-1">
                 <h1 id="answer">Click the button to begin.</h1>
                 <h3 id="letterList-text"></h3>
                 <button class="btn btn-info" onclick="randWord()">New Game</button>
@@ -47,6 +47,11 @@
         </div>
         
         <script src="assets/javascript/game.js"></script>
+        <script>
+            bellyRubs();
+            successes();
+            fails();
+        </script>
     </div>
 
     <div class="container-fluid text-center px-0 bg-info">

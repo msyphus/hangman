@@ -1,24 +1,29 @@
 // Variables
-//var huhu = ["../Images/belly01", "../Images/warn02", "../Images/bite02"]; //Huhu's images
 var escapes = 0; //number of wins
 var bites = 0;  //number of loses
 var rubs = 5;  //number of belly rubs left
-//var correctGuess;  //count the correct guesses
-//var spaces; //number of spaces in the word
-//var status = ["What a sweet boy!", "I don't like the look on his face!", "Woohoo!  Free acupuncture!"] ;  //the image captions
-var letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-var words = ["fuzz", "bengal", "sokoke", "fiesty", "playful", "purrfect", "buddy", "fur ball"];
-var word;
-//var lettersGuessed = []; //letters the user has guessed
-var currIndex;  //index of the current word
-var wordGuesses; //the word being built to match the hidden word
-var wrong = [];
-var gameOver = false;
-var userChoice;
-//var gameStart = false;
-//var gameEnd = false;
+var words = ["fuzz", "bengal", "sokoke", "fiesty", "playful", "purrfect", "buddy", "furball", "tabby", "hiss", "pawsitive"];
+var word; //the word chosen at random from the array above
+var wordGuesses; //the word as it's being guessed
+var wrong = []; //where to store the wrong guesses
+var gameOver = false;  //trigger end of game
+var userChoice; //the key that is pressed
 
-//generate a random word and display as blanks
+//Display functions
+
+function bellyRubs () {
+    document.getElementById("rubsLeft").textContent = "Belly Rubs Left: " + rubs; 
+};
+
+function successes () {
+    document.getElementById("wins").textContent = "You've escaped " + escapes + " bites";
+};
+
+function fails () {
+    document.getElementById("losses").textContent = "You've been bitten " + bites + " times";
+}
+
+//Create a new game: generate a random word and display as blanks, update display data, reset variables
 function randWord() {
     gameOver = false;
     wordGuesses = [];
@@ -30,28 +35,26 @@ function randWord() {
     wrong = [];
     document.getElementById("letterList-text").textContent = wrong;
     rubs = 5;   
-    document.getElementById("rubsLeft").textContent = "Belly Rubs Left: " + rubs;
+    bellyRubs();
     document.getElementById("huImg").src = "assets/images/belly01.JPG";
     document.getElementById("caption").textContent = "What a sweet boy!";
 };
 
-
-document.getElementById("rubsLeft").textContent = "Belly Rubs Left: " + rubs; 
-document.getElementById("wins").textContent = "You've escaped " + escapes + " bites";
-document.getElementById("losses").textContent = "Youv'e been bitten " + bites + " times";
-
+//What to do if the player wins the game
 function isWin () {
     if(wordGuesses.indexOf("_") === -1) {
         escapes++;
-        document.getElementById("wins").textContent = "You've escaped " + escapes + " bites";
+        successes();
+        document.getElementById("letterList-text").textContent = "Wow! See if you can do that again."
         gameOver = true;
     }
 };
 
+//What to do when a key is pressed
 document.onkeyup = function(event) {
     if(gameOver === false){
         var userCode = event.keyCode;
-        userChoice = event.key;
+        userChoice = event.key.toLowerCase();
         if(userCode < 65 || userCode > 90) {
             alert("Please type letters only.");
         } else {
@@ -68,7 +71,7 @@ document.onkeyup = function(event) {
         wrong.push(event.key);
         incorrect.textContent = wrong.join(", ");
         rubs--;
-        document.getElementById("rubsLeft").textContent = "Belly Rubs Left: " + rubs;
+        bellyRubs();
         if (rubs < 3) {
             document.getElementById("huImg").src = "assets/images/warn02.JPG";
             document.getElementById("caption").innerHTML = "I don't like the look on his face!";
@@ -79,7 +82,8 @@ document.onkeyup = function(event) {
             document.getElementById("answer").innerHTML = "Ouch! He caught you!";
             document.getElementById("rubsLeft").textContent = "Belly Rubs Left: Yikes!";
             bites++;
-            document.getElementById("losses").textContent = "You've been bitten " + bites + " times";
+            fails();
+            document.getElementById("letterList-text").textContent = "Try again...if you dare!"
             gameOver = true;
         }
         }
