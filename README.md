@@ -21,4 +21,6 @@ The following technologies were used to build this game:
 * Google Fonts
 * GIMP
 
+Game was not designed for use on mobile devices or without a keyboard.
+
 Created by Mark Syphus, 2020.  Images are property of Mark Syphus.
